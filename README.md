@@ -59,7 +59,9 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented user stories:
 
 <img src='https://imgur.com/q1wl10M' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/ypUuIpp" data-context="false" ><a href="//imgur.com/a/ypUuIpp"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+<img src='https://imgur.com/gallery/LoJOpRf' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+<blockquote class="imgur-embed-pub" lang="en" data-id="LoJOpRf"><a href="//imgur.com/LoJOpRf">codepath twitter</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
