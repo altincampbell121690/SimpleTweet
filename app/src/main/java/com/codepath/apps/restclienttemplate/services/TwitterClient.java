@@ -1,7 +1,9 @@
-package com.codepath.apps.restclienttemplate;
+package com.codepath.apps.restclienttemplate.services;
 
 import android.content.Context;
 
+import com.codepath.apps.restclienttemplate.BuildConfig;
+import com.codepath.apps.restclienttemplate.R;
 import com.codepath.asynchttpclient.RequestParams;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.codepath.oauth.OAuthBaseClient;
@@ -62,4 +64,12 @@ public class TwitterClient extends OAuthBaseClient {
 	 *    i.e client.get(apiUrl, params, handler);
 	 *    i.e client.post(apiUrl, params, handler);
 	 */
+
+	public void publishTweet(String tweetContent, JsonHttpResponseHandler handler){
+		String apiURL = getApiUrl("/statuses/update.json");
+		RequestParams params = new RequestParams();
+		params.put("status",tweetContent);
+		client.post(apiURL,params,"",handler); // post requests require a body
+
+	}
 }

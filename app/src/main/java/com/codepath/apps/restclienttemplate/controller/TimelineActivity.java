@@ -1,23 +1,27 @@
-package com.codepath.apps.restclienttemplate.models;
+package com.codepath.apps.restclienttemplate.controller;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.nfc.Tag;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.codepath.apps.restclienttemplate.R;
-import com.codepath.apps.restclienttemplate.TwitterApp;
-import com.codepath.apps.restclienttemplate.TwitterClient;
+import com.codepath.apps.restclienttemplate.services.TwitterApp;
+import com.codepath.apps.restclienttemplate.services.TwitterClient;
 import com.codepath.apps.restclienttemplate.adapters.TweetsAdapter;
+import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +34,12 @@ public class TimelineActivity extends AppCompatActivity {
     List<Tweet> tweets;
     TweetsAdapter tweetAdapter;
     SwipeRefreshLayout swipeContainer;
+    int REQUEST_CODE = 100;
     private String TAG = "TIME LINE ACTIVITY";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timelin);
+        setContentView(R.layout.activity_timeline);
         ActionBar actionBar = getSupportActionBar(); // or getActionBar();
         assert actionBar != null;
         //actionBar.setIcon(R.drawable.ic_launcher_twitter);
@@ -74,6 +79,7 @@ public class TimelineActivity extends AppCompatActivity {
 
     }
 
+
     private void populateHomeTimeLine(){
        client.getHomeTimeline(new JsonHttpResponseHandler() { // JsonHTTP RESPONSEHANDLER IS IMPORTANT
            @Override
@@ -101,4 +107,26 @@ public class TimelineActivity extends AppCompatActivity {
        });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK){
+            //GET data from the intent (tweet)
+            Tweet tweet = Parcels.unwrap(data.getParcelableExtra("tweet"));
+            //update the RV with tweet
+            //modify data source of tweets
+            tweets.add(0,tweet);
+            // update the adapter
+            tweetAdapter.notifyItemInserted(0);
+            rvTweets.smoothScrollToPosition(0);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public void onComposeTweet(View view) {
+//        Toast.makeText(this, "IM CLICKED", Toast.LENGTH_SHORT).show();
+        Intent composeIntent = new Intent(this, ComposeActivity.class);
+       // startActivity(intent);
+        startActivityForResult(composeIntent,REQUEST_CODE );
+
+    }
 }

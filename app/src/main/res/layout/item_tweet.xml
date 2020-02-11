@@ -36,5 +36,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/ivProfileImage"
-        android:text="This is my sample" />
+        android:text="This is my sample"
+        android:autoLink="all"
+        android:linksClickable="true"/>
 </RelativeLayout>

@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#1DA1F2</color>
     <color name="colorPrimaryDark">#1DA1F2</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#ff03A9F4</color>
     <color name="colorBlack">#14171A</color>
     <color name="colorDarkGray">#657786</color>
     <color name="colorLightGray">#AAB8C2</color>
@@ -17,7 +17,8 @@
     <color name="twitter_blue">#ff1da1f2</color>
     <color name="twitter_blue_30">#4d1da1f2</color>
     <color name="twitter_blue_50">#801da1f2</color>
-    <color name="twitter_blue_fill_pressed">#ff1370a9</color>
+    <color name="color_peach">#ec9b3b</color>
+    <color name="twitter_blue_fill_pressed">#1370A9</color>
     <color name="inline_action">@color/medium_gray</color>
     <color name="inline_action_disabled">@color/medium_gray_30</color>
     <color name="inline_action_like">@color/medium_red</color>
